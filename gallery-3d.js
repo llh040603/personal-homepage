@@ -97,13 +97,18 @@ function updatePhotoPositions() {
     const direction = data.column === 'left' ? -1 : 1;
     item.currentY += SCROLL_SPEED * direction;
 
-    // 循环边界检测
+    // 循环边界检测 - 增加缓冲区，让照片完全移出屏幕后再循环
     const columnHeight = window.innerHeight * 0.8; // 80vh
     const totalScrollHeight = TOTAL_HEIGHT * 6; // 6 photos per column
+    const buffer = 100; // 额外缓冲空间
 
-    if (data.column === 'left' && item.currentY < -CARD_HEIGHT) {
+    // 左列：向上移动，当完全离开顶部时从底部重新进入
+    if (data.column === 'left' && item.currentY < -(CARD_HEIGHT + buffer)) {
       item.currentY += totalScrollHeight;
-    } else if (data.column === 'right' && item.currentY > columnHeight) {
+    }
+
+    // 右列：向下移动，当完全离开底部时从顶部重新进入
+    if (data.column === 'right' && item.currentY > (columnHeight + buffer)) {
       item.currentY -= totalScrollHeight;
     }
 
