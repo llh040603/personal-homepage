@@ -50,7 +50,6 @@ function enterFocusMode(photoId) {
   // Prevent body scroll
   document.body.style.overflow = 'hidden';
 }
-}
 
 function exitFocusMode() {
   if (!isActive) return;
