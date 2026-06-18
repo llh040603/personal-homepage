@@ -912,6 +912,16 @@ h3 {
   box-shadow: 0 8px 24px rgba(45,112,78,.4);
 }
 
+.project-modal-cta.is-disabled,
+.project-modal-cta.is-disabled:hover {
+  opacity: .42;
+  cursor: not-allowed;
+  transform: none;
+  background: rgba(255,255,255,.06);
+  box-shadow: none;
+  pointer-events: auto;
+}
+
 body.project-detail-open .content-track {
   pointer-events: none;
 }

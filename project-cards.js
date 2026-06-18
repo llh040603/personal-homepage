@@ -13,8 +13,10 @@ const projects = [
     tags: ["React", "TypeScript", "AI Tool"],
     status: "Private Beta",
     image: "/projects/visual-draft-editor-cover.png",
-    demoUrl: "#",
-    githubUrl: "#"
+    demoUrl: "https://vector.ryota.top/",
+    githubUrl: "https://github.com/ryota-kk/AI-Visual-Draft-Editor.git",
+    demoAvailable: true,
+    githubPublic: true
   },
   {
     id: "bitmap-to-vector",
@@ -29,8 +31,10 @@ const projects = [
     tags: ["FastAPI", "SVG", "Vision"],
     status: "Prototype",
     image: "/projects/bitmap-to-vector-cover.png",
-    demoUrl: "#",
-    githubUrl: "#"
+    demoUrl: "https://svg.ryota.top/",
+    githubUrl: "https://github.com/ryota-kk/svg.tool.git",
+    demoAvailable: true,
+    githubPublic: true
   },
   {
     id: "cinematic-portfolio",
@@ -45,8 +49,10 @@ const projects = [
     tags: ["Animation", "Portfolio", "Motion"],
     status: "Live Iteration",
     image: "assets/projects/cinematic-portfolio.svg",
-    demoUrl: "#",
-    githubUrl: "#"
+    demoUrl: "",
+    githubUrl: "",
+    demoAvailable: false,
+    githubPublic: false
   },
   {
     id: "instant-feedback",
@@ -61,8 +67,10 @@ const projects = [
     tags: ["UI", "UX", "Frontend"],
     status: "Concept",
     image: "assets/projects/instant-feedback.svg",
-    demoUrl: "#",
-    githubUrl: "#"
+    demoUrl: "",
+    githubUrl: "",
+    demoAvailable: false,
+    githubPublic: false
   }
 ];
 
@@ -153,8 +161,9 @@ function bindModalEvents() {
 }
 
 function handlePlaceholderLink(event) {
-  const href = event.currentTarget.getAttribute("href");
-  if (!href || href === "#") {
+  const target = event.currentTarget;
+  const href = target.getAttribute("href");
+  if (target.classList.contains("is-disabled") || target.getAttribute("aria-disabled") === "true" || !href || href === "#") {
     event.preventDefault();
   }
 }
@@ -219,12 +228,42 @@ function renderProject(project) {
   modalElements.summary.textContent = project.summary;
   modalElements.background.textContent = project.background || project.description;
   modalElements.status.textContent = `Status / ${project.status}`;
-  modalElements.demo.href = project.demoUrl || "#";
-  modalElements.github.href = project.githubUrl || "#";
+  renderProjectLink(modalElements.demo, {
+    isAvailable: project.demoAvailable,
+    url: project.demoUrl,
+    availableText: "View Demo",
+    unavailableText: "Coming Soon",
+  });
+  renderProjectLink(modalElements.github, {
+    isAvailable: project.githubPublic,
+    url: project.githubUrl,
+    availableText: "GitHub",
+    unavailableText: "Private Repo",
+  });
   renderMedia(project);
   renderList(modalElements.features, project.features);
   renderList(modalElements.role, project.role);
   renderTech(project.tech);
+}
+
+function renderProjectLink(element, { isAvailable, url, availableText, unavailableText }) {
+  const canOpen = Boolean(isAvailable && url);
+  element.textContent = canOpen ? availableText : unavailableText;
+  element.classList.toggle("is-disabled", !canOpen);
+  element.setAttribute("aria-disabled", canOpen ? "false" : "true");
+
+  if (canOpen) {
+    element.href = url;
+    element.target = "_blank";
+    element.rel = "noopener noreferrer";
+    element.tabIndex = 0;
+    return;
+  }
+
+  element.removeAttribute("href");
+  element.removeAttribute("target");
+  element.removeAttribute("rel");
+  element.tabIndex = -1;
 }
 
 function renderMedia(project) {
