@@ -1,72 +1,34 @@
-// Scene2 project cards and detail overlay. Add new projects by appending here.
+// Scene2 idol cards and detail overlay.
 const projects = [
   {
-    id: "visual-draft-editor",
-    title: "Visual Draft Editor",
-    type: "AI Frontend Annotation Tool",
-    description: "一个辅助 AI 前端开发的可视化标注工具，支持拖拽标注并导出修改指令。",
-    summary: "一个辅助 AI 前端开发的可视化标注工具。",
-    background: "传统 AI 前端修改只能通过文字描述，表达不够直观。这个工具让用户可以直接在页面上可视化调整，再交给 AI 执行。",
-    features: ["页面元素选择", "拖拽移动组件", "文本标注", "修改记录生成", "导出给 Codex"],
-    role: ["产品设计", "前端交互设计", "功能规划", "测试反馈整理"],
-    tech: ["React", "TypeScript", "DOM Overlay", "CSS Transform"],
-    tags: ["React", "TypeScript", "AI Tool"],
-    status: "Private Beta",
-    image: "/projects/visual-draft-editor-cover.png",
-    demoUrl: "https://vector.ryota.top/",
-    githubUrl: "https://github.com/ryota-kk/AI-Visual-Draft-Editor.git",
-    demoAvailable: true,
-    githubPublic: true
-  },
-  {
-    id: "bitmap-to-vector",
-    title: "Bitmap to Vector Tool",
-    type: "Computer Vision Web Tool",
-    description: "一个将位图自动转换为可编辑 SVG 矢量图的 Web 工具。",
-    summary: "把位图素材转换为更容易编辑和复用的 SVG 矢量图。",
-    background: "位图素材在放大、编辑和复用时容易失真。这个工具探索把图形识别、路径生成和前端预览结合起来，降低矢量化处理门槛。",
-    features: ["位图上传", "自动路径识别", "SVG 预览", "参数调整", "矢量文件导出"],
-    role: ["产品规划", "交互流程设计", "前端界面设计", "测试反馈整理"],
-    tech: ["FastAPI", "SVG", "Computer Vision", "JavaScript"],
-    tags: ["FastAPI", "SVG", "Vision"],
-    status: "Prototype",
-    image: "/projects/bitmap-to-vector-cover.png",
-    demoUrl: "https://svg.ryota.top/",
-    githubUrl: "https://github.com/ryota-kk/svg.tool.git",
-    demoAvailable: true,
-    githubPublic: true
-  },
-  {
-    id: "cinematic-portfolio",
-    title: "Cinematic Portfolio",
-    type: "Motion Portfolio Website",
-    description: "一个基于场景切换、视频背景和沉浸式交互的个人作品集网站。",
-    summary: "用电影化场景切换展示个人作品、相册和联系信息。",
-    background: "传统个人主页容易变成静态信息列表。这个项目用视频背景、滚轮转场、水波互动和玻璃卡片，让作品集更像一段可进入的场景。",
-    features: ["视频背景场景", "滚轮切换", "项目详情弹窗", "相册展示", "联系页反馈表单"],
-    role: ["整体视觉方向", "前端实现", "动效调试", "响应式优化"],
-    tech: ["HTML", "CSS", "JavaScript", "Animation"],
-    tags: ["Animation", "Portfolio", "Motion"],
-    status: "Live Iteration",
-    image: "assets/projects/cinematic-portfolio.svg",
+    id: "idol-1",
+    title: "劳大",
+    type: "闪闪发光的存在",
+    description: "一个让人感到温暖和力量的人。",
+    summary: "闪闪发光的存在，照亮了我的日常。",
+    background: "在低落的时候看到ta，就会觉得世界还是有美好的事情。",
+    features: ["治愈的笑容", "认真的态度", "温暖的作品"],
+    role: ["带来快乐", "传递正能量", "激励前行"],
+    tags: ["偶像", "温暖", "力量"],
+    status: "一直喜欢",
+    image: "assets/gallery/idol1.jpg",
     demoUrl: "",
     githubUrl: "",
     demoAvailable: false,
     githubPublic: false
   },
   {
-    id: "instant-feedback",
-    title: "Instant Feedback System",
-    type: "Frontend Feedback UI",
-    description: "一个用于收集用户反馈并快速展示交互反馈的前端系统。",
-    summary: "让用户提交反馈后立刻得到清晰、轻量的前端响应。",
-    background: "反馈表单经常缺少即时回应，用户不知道内容是否被接收。这个项目把表单状态、成功提示和界面动效组织成更完整的体验。",
-    features: ["反馈表单", "即时提示", "输入状态", "响应式布局", "按钮反馈"],
-    role: ["UI 设计", "UX 优化", "前端实现", "交互测试"],
-    tech: ["UI", "UX", "Frontend", "CSS"],
-    tags: ["UI", "UX", "Frontend"],
-    status: "Concept",
-    image: "assets/projects/instant-feedback.svg",
+    id: "idol-2",
+    title: "圆头耄耋",
+    type: "闪闪发光的存在",
+    description: "为了哈气而生。",
+    summary: "为了哈气而生。",
+    background: "圆头耄耋，天生就是来哈气的，气场两米八。",
+    features: ["出色的才华", "不懈的努力", "真诚的心"],
+    role: ["带来感动", "传递热爱", "激励成长"],
+    tags: ["偶像", "才华", "热爱"],
+    status: "一直喜欢",
+    image: "assets/gallery/idol2.jpg",
     demoUrl: "",
     githubUrl: "",
     demoAvailable: false,
@@ -100,51 +62,10 @@ function initProjectCards() {
 
   if (!modalElements.overlay || !modalElements.card) return;
 
-  if (modalElements.overlay.parentElement !== document.body) {
-    document.body.appendChild(modalElements.overlay);
-  }
+  if (modalElements.overlay.parentElement !== document.body) document.body.appendChild(modalElements.overlay);
+  modalElements.overlay.style.display = "none";
+  modalElements.overlay.setAttribute("aria-hidden", "true");
 
-  renderProjectCards();
-  bindCardEvents();
-  bindModalEvents();
-}
-
-function renderProjectCards() {
-  const grid = document.querySelector(".project-cards-grid");
-  if (!grid) return;
-
-  grid.innerHTML = projects.map((project) => `
-    <article class="project-card" data-project-id="${project.id}">
-      <div class="project-image-wrap">
-        <img class="project-card-image" src="${project.image}" alt="${project.title}">
-      </div>
-      <div class="project-card-info">
-        <h3 class="project-card-title">${project.title}</h3>
-        <p class="project-card-description">${project.description}</p>
-        <div class="project-tags">
-          ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
-        </div>
-      </div>
-    </article>
-  `).join("");
-}
-
-function bindCardEvents() {
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("click", handleCardClick);
-    card.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        handleCardClick(event);
-      }
-    });
-    card.tabIndex = 0;
-    card.setAttribute("role", "button");
-    card.setAttribute("aria-haspopup", "dialog");
-  });
-}
-
-function bindModalEvents() {
   modalElements.backdrop?.addEventListener("click", closeProjectModal);
   modalElements.closeBtn?.addEventListener("click", closeProjectModal);
   modalElements.closeTextBtn?.addEventListener("click", closeProjectModal);
@@ -227,23 +148,23 @@ function renderProject(project) {
   modalElements.title.textContent = project.title;
   modalElements.summary.textContent = project.summary;
   modalElements.background.textContent = project.background || project.description;
-  modalElements.status.textContent = `Status / ${project.status}`;
+  modalElements.status.textContent = project.status;
   renderProjectLink(modalElements.demo, {
     isAvailable: project.demoAvailable,
     url: project.demoUrl,
-    availableText: "View Demo",
-    unavailableText: "Coming Soon",
+    availableText: "查看主页",
+    unavailableText: "暂无链接",
   });
   renderProjectLink(modalElements.github, {
     isAvailable: project.githubPublic,
     url: project.githubUrl,
-    availableText: "GitHub",
-    unavailableText: "Private Repo",
+    availableText: "相关链接",
+    unavailableText: "暂无链接",
   });
   renderMedia(project);
   renderList(modalElements.features, project.features);
   renderList(modalElements.role, project.role);
-  renderTech(project.tech);
+  renderTech(project.tags);
 }
 
 function renderProjectLink(element, { isAvailable, url, availableText, unavailableText }) {
@@ -282,7 +203,7 @@ function renderMedia(project) {
 
   const image = document.createElement("img");
   image.src = project.image;
-  image.alt = `${project.title} preview`;
+  image.alt = project.title;
   modalElements.media.appendChild(image);
 }
 

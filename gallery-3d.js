@@ -14,18 +14,13 @@ function throttle(fn, delay) {
 }
 
 const PHOTOS = [
-  { id: 1, src: 'assets/gallery/photo1.jpg', title: '日照雅拉', description: '晨光掠过雪峰，远行的人在山脊上写下微小的勇敢。', date: '2026.06', column: 'left' },
-  { id: 2, src: 'assets/gallery/photo2.jpg', title: '云雾川西', description: '云雾漫过群山，少年站在风里，把川西的冷冽收藏进眼底。', date: '2026.05', column: 'right' },
-  { id: 3, src: 'assets/gallery/photo3.jpg', title: '厦门海边', description: '海风从桥下吹来，花束遮住面庞，也遮不住奔向自由的心情。', date: '2026.04', column: 'left' },
-  { id: 4, src: 'assets/gallery/photo4.jpg', title: '稻城亚丁', description: '山谷辽阔，雪峰沉默，脚下的路通向更远的自己。', date: '2026.03', column: 'right' },
-  { id: 5, src: 'assets/gallery/photo5.jpg', title: '墨石公园', description: '灰白山岩如异星荒原，人在其中短暂停留，像一场清醒的梦。', date: '2026.02', column: 'left' },
-  { id: 6, src: 'assets/gallery/photo6.jpg', title: '山城步道', description: '江风穿过城市天际，手中一把折扇，展开山城的夏日记忆。', date: '2026.01', column: 'right' },
-  { id: 7, src: 'assets/gallery/photo7.jpg', title: '油菜花海', description: '金色花浪漫过春天，笑声落在风里，像阳光一样明亮。', date: '2025.12', column: 'left' },
-  { id: 8, src: 'assets/gallery/photo8.jpg', title: '湘江北去', description: '伟岸石像望向远方，湘江水声未歇，少年也在时间里向前。', date: '2025.11', column: 'right' },
-  { id: 9, src: 'assets/gallery/photo9.jpg', title: '洪崖洞', description: '灯火沿着吊脚楼层层亮起，夜色里的山城像一场热闹的梦。', date: '2025.10', column: 'left' },
-  { id: 10, src: 'assets/gallery/photo10.jpg', title: '日落与海', description: '暮色沉入海面，浪声轻轻靠岸，把一天的疲惫都交给黄昏。', date: '2025.09', column: 'right' },
-  { id: 11, src: 'assets/gallery/photo11.jpg', title: '一路向海', description: '车轮贴着海风前行，椰影、白沙和远方一起落进夏天。', date: '2025.08', column: 'left' },
-  { id: 12, src: 'assets/gallery/photo12.jpg', title: '普洱茶香', description: '灯影温柔，花香与茶香慢慢散开，时光在一盏清茶里安静下来。', date: '2025.07', column: 'right' }
+  { id: 1, src: 'assets/gallery/me1.jpg', title: '帅照 1', description: '自信的样子，就是最好的风景。', date: '2026.06', column: 'left' },
+  { id: 2, src: 'assets/gallery/me2.jpg', title: '帅照 2', description: '镜头前的每一刻，都是真实的自己。', date: '2026.05', column: 'right' },
+  { id: 3, src: 'assets/gallery/me3.jpg', title: '帅照 3', description: '生活不止眼前的忙碌，还有值得记录的瞬间。', date: '2026.04', column: 'left' },
+  { id: 4, src: 'assets/gallery/me4.jpg', title: '帅照 4', description: '每一张照片，都是时光的标本。', date: '2026.03', column: 'right' },
+  { id: 5, src: 'assets/gallery/friend.jpg', title: '好厚米', description: '叶总会老板。', date: '2026.02', column: 'left' },
+  { id: 6, src: 'assets/gallery/my-cat.jpg', title: '我的猫咪', description: '毛茸茸的小家伙，治愈所有不开心。', date: '2025.11', column: 'right' },
+  { id: 7, src: 'assets/gallery/my-cat1.jpg', title: '猫咪日常', description: '睡姿百变，可爱不变。', date: '2025.10', column: 'left' }
 ];
 
 const SCROLL_SPEED = 0.3;

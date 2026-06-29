@@ -22,7 +22,7 @@ const scene2Cards = document.querySelector('.project-cards-grid, .content-grid')
 const feedbackForm = document.getElementById('feedbackForm');
 const feedbackToast = document.getElementById('feedbackToast');
 const feedbackSubmit = feedbackForm?.querySelector('.feedback-submit');
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeewdkap";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpqgllbk";
 
 let isIntroActive = true;
 let phase = 'scene1-idle';
@@ -224,16 +224,16 @@ const setPhase = (nextPhase) => {
   document.body.dataset.phase = nextPhase.replace('-idle', '').replace('-intro', '');
 
   const label = {
-    'scene1-idle': 'Scene 01 路 Idle Loop',
-    'transition': 'Transition 01 鈫?02',
-    'scene2-intro': 'Scene 02 路 Intro Playing',
-    'scene2-idle': 'Scene 02 路 Last Second Loop',
-    'scene3-idle': 'Scene 03 路 Gallery',
-    'scene4-idle': 'Scene 04 路 Contact',
-    'transition-2-3': 'Transition 02 鈫?03',
-    'transition-3-2': 'Transition 03 鈫?02',
-    'transition-3-4': 'Transition 03 鈫?04',
-    'transition-4-3': 'Transition 04 鈫?03',
+    'scene1-idle': '场景 01 · 空闲',
+    'transition': '过渡 01 → 02',
+    'scene2-intro': '场景 02 · 播放中',
+    'scene2-idle': '场景 02 · 微环',
+    'scene3-idle': '场景 03 · 相册',
+    'scene4-idle': '场景 04 · 联系',
+    'transition-2-3': '过渡 02 → 03',
+    'transition-3-2': '过渡 03 → 02',
+    'transition-3-4': '过渡 03 → 04',
+    'transition-4-3': '过渡 04 → 03',
   }[nextPhase] || nextPhase;
 
   stateText.textContent = label;
@@ -683,7 +683,7 @@ feedbackForm?.addEventListener('submit', async (event) => {
 
   if (feedbackSubmit) {
     feedbackSubmit.disabled = true;
-    feedbackSubmit.textContent = 'Sending... / 鍙戦€佷腑...';
+    feedbackSubmit.textContent = '发送中...';
   }
   if (feedbackToast) feedbackToast.textContent = '';
 
@@ -698,18 +698,18 @@ feedbackForm?.addEventListener('submit', async (event) => {
 
     if (response.ok) {
       form.reset();
-      if (feedbackToast) feedbackToast.textContent = 'Thanks for your feedback / 鎰熻阿浣犵殑鍙嶉';
+      if (feedbackToast) feedbackToast.textContent = '感谢你的留言！';
     } else if (feedbackToast) {
-      feedbackToast.textContent = 'Something went wrong. Please try again. / 鎻愪氦澶辫触锛岃绋嶅悗閲嶈瘯';
+      feedbackToast.textContent = '提交失败，请稍后重试。';
     }
   } catch (error) {
     if (feedbackToast) {
-      feedbackToast.textContent = 'Something went wrong. Please try again. / 鎻愪氦澶辫触锛岃绋嶅悗閲嶈瘯';
+      feedbackToast.textContent = '提交失败，请稍后重试。';
     }
   } finally {
     if (feedbackSubmit) {
       feedbackSubmit.disabled = false;
-      feedbackSubmit.textContent = 'Submit / 鎻愪氦';
+      feedbackSubmit.textContent = '提交';
     }
   }
 }, { capture: true });
